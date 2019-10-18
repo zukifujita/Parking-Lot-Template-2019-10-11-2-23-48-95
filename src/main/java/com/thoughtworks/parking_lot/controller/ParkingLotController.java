@@ -32,4 +32,10 @@ public class ParkingLotController {
                                                @RequestParam(required = false) Integer pageSize) {
         return parkingLotService.showAllParkingLotsByPage(page, pageSize);
     }
+
+    @GetMapping(path = "/{id}", produces = {"application/json"})
+    @ResponseStatus(code = HttpStatus.OK)
+    public ParkingLot showParkingLotByName(@RequestParam Integer id) {
+        return parkingLotService.showParkingLotByName(id);
+    }
 }
