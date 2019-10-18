@@ -38,4 +38,11 @@ public class ParkingLotController {
     public ParkingLot showParkingLotByName(@RequestParam Integer id) {
         return parkingLotService.showParkingLotByName(id);
     }
+
+    @PatchMapping(path = "/{id}", produces = {"application/json"})
+    @ResponseStatus(code = HttpStatus.OK)
+    public ParkingLot editParkingLot(@RequestParam Integer id, @RequestBody ParkingLot parkingLot)
+            throws NotFoundException {
+        return parkingLotService.editParkingLot(id, parkingLot);
+    }
 }
