@@ -25,4 +25,11 @@ public class ParkingLotController {
     public ParkingLot deleteParking(@PathVariable Integer id) throws NotFoundException {
         return parkingLotService.deleteParkingLot(id);
     }
+
+    @GetMapping(produces = {"application/json"})
+    @ResponseStatus(code = HttpStatus.OK)
+    public Iterable<ParkingLot> showParkingLot(@RequestParam(required = false) Integer page,
+                                               @RequestParam(required = false) Integer pageSize) {
+        return parkingLotService.showAllParkingLotsByPage(page, pageSize);
+    }
 }
