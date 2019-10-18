@@ -39,4 +39,15 @@ public class ParkingLotService {
     public ParkingLot showParkingLotByName(Integer id) {
         return parkingLotRepository.findById(id).orElse(null);
     }
+
+    public ParkingLot editParkingLot(Integer id, ParkingLot parkingLot) throws NotFoundException {
+        ParkingLot parkingLotFromDb = parkingLotRepository.findById(id).orElse(null);
+
+        if (parkingLotFromDb != null) {
+            parkingLotFromDb.setCapacity(parkingLot.getCapacity());
+            parkingLotRepository.save(parkingLotFromDb);
+        }
+
+        throw new NotFoundException(RECORD_NOT_FOUND);
+    }
 }
