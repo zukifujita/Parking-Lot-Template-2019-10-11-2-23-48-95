@@ -20,10 +20,10 @@ public class ParkingLotController {
         return parkingLotService.addParkingLot(parkingLot);
     }
 
-    @DeleteMapping(path = {"/{id}"})
+    @DeleteMapping(path = {"/{name}"})
     @ResponseStatus(code = HttpStatus.OK)
-    public ParkingLot deleteParking(@PathVariable Integer id) throws NotFoundException {
-        return parkingLotService.deleteParkingLot(id);
+    public ParkingLot deleteParking(@PathVariable String name) throws NotFoundException {
+        return parkingLotService.deleteParkingLot(name);
     }
 
     @GetMapping(produces = {"application/json"})
@@ -33,16 +33,16 @@ public class ParkingLotController {
         return parkingLotService.showAllParkingLotsByPage(page, pageSize);
     }
 
-    @GetMapping(path = "/{id}", produces = {"application/json"})
+    @GetMapping(path = "/{name}", produces = {"application/json"})
     @ResponseStatus(code = HttpStatus.OK)
-    public ParkingLot showParkingLotByName(@RequestParam Integer id) {
-        return parkingLotService.showParkingLotByName(id);
+    public ParkingLot showParkingLotByName(@RequestParam String name) {
+        return parkingLotService.showParkingLotByName(name);
     }
 
-    @PatchMapping(path = "/{id}", produces = {"application/json"})
+    @PatchMapping(path = "/{name}", produces = {"application/json"})
     @ResponseStatus(code = HttpStatus.OK)
-    public ParkingLot editParkingLot(@RequestParam Integer id, @RequestBody ParkingLot parkingLot)
+    public ParkingLot editParkingLot(@RequestParam String name, @RequestBody ParkingLot parkingLot)
             throws NotFoundException {
-        return parkingLotService.editParkingLot(id, parkingLot);
+        return parkingLotService.editParkingLot(name, parkingLot);
     }
 }
