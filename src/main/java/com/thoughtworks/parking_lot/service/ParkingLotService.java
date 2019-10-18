@@ -35,4 +35,8 @@ public class ParkingLotService {
 
         return parkingLotRepository.findAll();
     }
+
+    public ParkingLot showParkingLotByName(Integer id) {
+        return parkingLotRepository.findById(id).orElse(null);
+    }
 }
