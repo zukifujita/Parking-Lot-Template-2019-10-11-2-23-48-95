@@ -18,8 +18,8 @@ public class ParkingLotService {
         return parkingLotRepository.save(parkingLot);
     }
 
-    public ParkingLot deleteParkingLot(Integer id) throws NotFoundException {
-        ParkingLot parkingLotFromDb = parkingLotRepository.findById(id).orElse(null);
+    public ParkingLot deleteParkingLot(String name) throws NotFoundException {
+        ParkingLot parkingLotFromDb = parkingLotRepository.findById(name).orElse(null);
 
         if (parkingLotFromDb != null) {
             parkingLotRepository.delete(parkingLotFromDb);
@@ -36,12 +36,12 @@ public class ParkingLotService {
         return parkingLotRepository.findAll();
     }
 
-    public ParkingLot showParkingLotByName(Integer id) {
-        return parkingLotRepository.findById(id).orElse(null);
+    public ParkingLot showParkingLotByName(String name) {
+        return parkingLotRepository.findById(name).orElse(null);
     }
 
-    public ParkingLot editParkingLot(Integer id, ParkingLot parkingLot) throws NotFoundException {
-        ParkingLot parkingLotFromDb = parkingLotRepository.findById(id).orElse(null);
+    public ParkingLot editParkingLot(String name, ParkingLot parkingLot) throws NotFoundException {
+        ParkingLot parkingLotFromDb = parkingLotRepository.findById(name).orElse(null);
 
         if (parkingLotFromDb != null) {
             parkingLotFromDb.setCapacity(parkingLot.getCapacity());
